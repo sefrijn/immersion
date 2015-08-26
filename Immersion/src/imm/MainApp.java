@@ -4,12 +4,8 @@ import oscP5.*;
 import netP5.*;
 import java.io.*;
 
-import org.omg.CORBA._PolicyStub;
-
 import imm.Skeleton;
 import ddf.minim.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
 import codeanticode.syphon.*;
 
 @SuppressWarnings("serial")
@@ -29,6 +25,12 @@ public class MainApp extends PApplet{
 	int beatsLifespan = 12;
 	int beatsPerBar = 1;
 	int frameRateSet = 30;
+	
+	// Time options
+	int phase1 = frameRateSet*10;
+	int phase2 = phase1+frameRateSet*5;
+	int phase3 = phase2+frameRateSet*20;
+	int phase4 = phase3+frameRateSet*60*4;
 	
 	// Visual options
 	float screenCentreX = setupWidth * 0.5f;
@@ -124,27 +126,26 @@ public class MainApp extends PApplet{
 
 
 	public void draw(){
-//		UPDATE EVERYTHING
+//		UPDATE TIMER
 		timer.update();
-		world.update();
-		if(timer.beatZero){
-			seqPlayer.update();
-			seqPlayer.play();
-		}
-		if(timer.barZero){
-			hbPlayer.play();			
-		}
-
+		
 //		START DRAWING
 		pg.beginDraw();
 		pg.background(0);
-//		DRAW ALL OBJECTS
-		seqBG.draw();
-		seqPlayer.draw();
-		hbPlayer.draw();
-		world.draw();
-		sequence.draw();
-		skeleton.draw();
+
+		if(frameCount < phase1){
+			phase1();
+		}else if(frameCount < phase2){
+			phase2();
+		}else if(frameCount < phase3){
+			phase3();
+		}else if(frameCount < phase4){
+			phase4();
+		}else{
+			// go to black screen
+			phaseBlack();
+		}
+
 //		CIRCLE MASK
 		drawMask();
 //		CLOSE
@@ -158,6 +159,49 @@ public class MainApp extends PApplet{
 //		SEND TO SYPHON
 		sender.sendImage();
 	}
+	
+	void phase1(){
+		pg.background(0);
+		println("Phase 1");
+	}
+	
+	void phase2(){
+		pg.background(255,0,0);
+		println("Phase 2");
+	}
+	
+	void phase3(){
+		pg.background(0,255,0);		
+		println("Phase 3");
+	}
+	
+	void phase4(){
+		println("Phase 4");
+		// UPDATE
+		world.update();
+		if(timer.beatZero){
+			seqPlayer.update();
+			seqPlayer.play();
+		}
+		if(timer.barZero){
+			hbPlayer.play();			
+		}
+		
+		// DRAW
+		seqBG.draw();
+		seqPlayer.draw();
+		hbPlayer.draw();
+		world.draw();
+		sequence.draw();
+		skeleton.draw();		
+		
+	}
+	
+	void phaseBlack(){
+		
+	}
+	
+	
 
 	
 	public void stop(){
