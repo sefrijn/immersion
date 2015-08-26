@@ -2,6 +2,9 @@ package imm;
 
 import processing.core.*;
 import imm.SoundObject;
+
+import com.jogamp.common.os.MachineDescription.ID;
+
 import imm.Skeleton;
 
 
@@ -15,6 +18,8 @@ public class World {
 	private ImageLibrary orbs;
 	private Skeleton sk;
 	Timer t;
+	int[] triggerHandEventsTimer;
+	int triggerBuffer;
 	private int[] worldSoundObjectDragged;
 	private int[][] sequenceSoundObjectDragged;
 
@@ -33,6 +38,10 @@ public class World {
 		sequenceSoundObjectDragged[1][0] = -1;
 		sequenceSoundObjectDragged[1][1] = -1;
 
+		triggerHandEventsTimer = new int[2];
+		triggerHandEventsTimer[0] = 0;
+		triggerHandEventsTimer[1] = 0;
+		triggerBuffer = PApplet.round(_p.frameRateSet/1.0f);
 		
 		this.sl = null;
 		this.seq = null;
@@ -86,24 +95,31 @@ public class World {
 
 	void triggerHandEvents(){
 		for(int hand = 0;hand < sk.hands.length; hand++){
-//			if(sk.handsChangeState[hand]){
-//				PApplet.println(hand + ": Change State: "+sk.handsChangeState[hand]+", Closed: "+sk.handsClosed[hand]);
-//			}
-
+			if(sk.handsChangeState[hand]){
+				triggerHandEventsTimer[hand] = triggerBuffer;
+				PApplet.println("timer reset");
+			}
+			
 			if(sk.handsClosed[hand]){
-				if(sk.handsChangeState[hand]){
-					// add buffer
-					// start timer
+				if(triggerHandEventsTimer[hand] == 1){
 					handGrabbed(hand);
-				}else{
-					// if timer = zero
+				}else if(triggerHandEventsTimer[hand] == 0){
 					handDragged(hand);
 				}
 			}
-			if(!sk.handsClosed[hand] && sk.handsChangeState[hand]){
-				// add buffer
-				handReleased(hand);
+			if(!sk.handsClosed[hand]){
+				if(triggerHandEventsTimer[hand] == 1){
+					PApplet.println("release called");
+					handReleased(hand);					
+				}else if(triggerHandEventsTimer[hand] > 1){
+					handDragged(hand);
+				}
 			}
+
+			if(triggerHandEventsTimer[hand] > 0){
+				triggerHandEventsTimer[hand]--;
+			}			
+			
 			sk.handsChangeState[hand] = false;
 		} 
 	}

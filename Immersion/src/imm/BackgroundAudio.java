@@ -1,6 +1,5 @@
 package imm;
 
-import ddf.minim.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 

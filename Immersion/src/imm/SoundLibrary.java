@@ -5,8 +5,6 @@ import processing.core.*;
 import java.io.File;
 import java.io.FilenameFilter;
 
-import ddf.minim.*;
-import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 public class SoundLibrary {

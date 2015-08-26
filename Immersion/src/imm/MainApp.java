@@ -21,16 +21,16 @@ public class MainApp extends PApplet{
 	int beats = 16;
 	int maxSoundsPerBeat = 4;
 	int worldSoundObjectsSize = 40;
-	int defaultInterval = 12;
+	int defaultInterval = 30;
 	int beatsLifespan = 12;
 	int beatsPerBar = 1;
 	int frameRateSet = 30;
 	
 	// Time options
-	int phase1 = frameRateSet*10;
-	int phase2 = phase1+frameRateSet*5;
-	int phase3 = phase2+frameRateSet*20;
-	int phase4 = phase3+frameRateSet*60*4;
+	int phase1 = frameRateSet*1; // 5 seconds
+	int phase2 = phase1+frameRateSet*1; // 10 seconds
+	int phase3 = phase2+frameRateSet*1; // 20 seconds
+	int phase4 = phase3+frameRateSet*60*4; // 4 minutes
 	
 	// Visual options
 	float screenCentreX = setupWidth * 0.5f;
@@ -161,22 +161,21 @@ public class MainApp extends PApplet{
 	}
 	
 	void phase1(){
-		pg.background(0);
-		println("Phase 1");
+		pg.background(0,0,255);
+		if(timer.barZero){
+			hbPlayer.play();			
+		}		
 	}
 	
 	void phase2(){
 		pg.background(255,0,0);
-		println("Phase 2");
 	}
 	
 	void phase3(){
 		pg.background(0,255,0);		
-		println("Phase 3");
 	}
 	
 	void phase4(){
-		println("Phase 4");
 		// UPDATE
 		world.update();
 		if(timer.beatZero){
