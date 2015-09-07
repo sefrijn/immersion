@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ProcessingCore"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/oscP5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Syphon">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/sefrijn/JavaEclipse/processing-libs/Syphon/library"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/minim"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

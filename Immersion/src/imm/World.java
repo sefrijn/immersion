@@ -188,18 +188,20 @@ public class World {
 	}		
 	
 	void createSoundObject(int index){
-		String orb;
-		// Temporary random orb
-		orb = orbs.paths[MainApp.round(_p.random(orbs.paths.length-1))][0];
 		int s = MainApp.round(_p.random(sl.paths.length-1));
+
+		// Temporary random orb
+		String orb;
+//		orb = orbs.paths[MainApp.round(_p.random(orbs.paths.length-1))][0];
+//		int s = MainApp.round(_p.random(sl.paths.length-1));
 		// In the future this should be based on s. As many Sounds 's' as Orbs
 		// Name Orbs exactly same as sounds
-//		if(s < orbs.paths.length-1){
-//			orb = orbs.paths[s][0];			
-//		}else{
-//			orb = orbs.paths[0][0];
-//			PApplet.println("Name each Orb file eaxctly as Sounds");
-//		}
+		if(s < orbs.paths.length-1){
+			orb = orbs.paths[s][0];			
+		}else{
+			orb = orbs.paths[0][0];
+			PApplet.println("Name each Orb file eaxctly as Sounds");
+		}
 		worldSoundObjects[index] = new SoundObject(_p,s,orb);
 	}
 	void destroySoundObject(int index){
