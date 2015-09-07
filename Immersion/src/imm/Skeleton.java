@@ -53,10 +53,10 @@ public class Skeleton {
 		_p.pg.pushMatrix();
 		_p.pg.translate(_p.setupWidth/2, _p.setupHeight/2);
 		_p.pg.noFill();
-		_p.pg.fill(255);
-		_p.pg.stroke(255,100);
-		_p.pg.ellipse(hands[0].x, hands[0].y, 24, 24);
-		_p.pg.ellipse(hands[1].x, hands[1].y, 24, 24);
+//		_p.pg.fill(255);
+		_p.pg.stroke(255);
+		_p.pg.ellipse(hands[0].x, hands[0].y, 55, 55);
+		_p.pg.ellipse(hands[1].x, hands[1].y, 55, 55);
 		_p.pg.popMatrix();			
 	}
 }

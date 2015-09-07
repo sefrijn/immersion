@@ -161,18 +161,26 @@ public class MainApp extends PApplet{
 	}
 	
 	void phase1(){
-		pg.background(0,0,255);
 		if(timer.barZero){
 			hbPlayer.play();			
 		}		
 	}
 	
 	void phase2(){
-		pg.background(255,0,0);
+		if(timer.barZero){
+			hbPlayer.play();			
+		}		
+		seqBG.draw();
+		hbPlayer.draw();
 	}
 	
 	void phase3(){
-		pg.background(0,255,0);		
+		if(timer.barZero){
+			hbPlayer.play();			
+		}		
+		seqBG.draw();
+		hbPlayer.draw();
+		skeleton.draw();	
 	}
 	
 	void phase4(){
@@ -197,7 +205,7 @@ public class MainApp extends PApplet{
 	}
 	
 	void phaseBlack(){
-		
+		pg.background(0);		
 	}
 	
 	

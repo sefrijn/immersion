@@ -21,14 +21,17 @@ public class Sequence {
 	void draw(){
 		_p.pg.pushMatrix();
 		_p.pg.translate(_p.setupWidth/2f, _p.setupHeight/2f);
-		_p.pg.noStroke();
-		_p.pg.fill(255,50);;			
+		_p.pg.noFill();
+		_p.pg.stroke(255);
+		
+//		_p.pg.noStroke();
+//		_p.pg.fill(255,50);;			
 		for(int i = 0;i<sl;i++){
 			for(int j = 0;j<ss;j++){
 				if(sequenceSoundObjects[i][j] != null){
 					float x = sequenceSoundObjects[i][j].location.x;
 					float y = sequenceSoundObjects[i][j].location.y;
-					_p.pg.ellipse(x, y, sequenceSoundObjects[i][j].radius*2f, sequenceSoundObjects[i][j].radius*2f);
+					_p.pg.ellipse(x, y, sequenceSoundObjects[i][j].radius*2.2f, sequenceSoundObjects[i][j].radius*2.2f);
 				}
 			}
 		}

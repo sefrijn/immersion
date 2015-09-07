@@ -2,9 +2,6 @@ package imm;
 
 import processing.core.*;
 import imm.SoundObject;
-
-import com.jogamp.common.os.MachineDescription.ID;
-
 import imm.Skeleton;
 
 
@@ -99,7 +96,6 @@ public class World {
 				triggerHandEventsTimer[hand] = triggerBuffer;
 				PApplet.println("timer reset");
 			}
-			
 			if(sk.handsClosed[hand]){
 				if(triggerHandEventsTimer[hand] == 1){
 					handGrabbed(hand);
@@ -157,6 +153,9 @@ public class World {
 	}
 	void handReleased(int hand){		
 		if(worldSoundObjectDragged[hand] != -1){
+			// Stop playing the file
+			seq.soundlibrary.stop(worldSoundObjects[worldSoundObjectDragged[hand]].soundFile);
+			
 			PVector center = new PVector(0,_p.sequencerCenterOffsetY);
 			// Check if the released object is inside the sequencer circle
 			if(PVector.sub(worldSoundObjects[worldSoundObjectDragged[hand]].location,center).mag() < _p.sequencerSize / 2.0f){
