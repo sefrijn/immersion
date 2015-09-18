@@ -12,7 +12,7 @@ public class BackgroundAudio {
 	
 	public BackgroundAudio(MainApp parent) {
 		_p = parent;
-		AudioRecordingStream myFile = _p.minim.loadFileStream( "Lee_Rosevere_-_03_-_Illuminations.mp3", // the file to load
+		AudioRecordingStream myFile = _p.minim.loadFileStream( _p.dataFolder.concat("/Lee_Rosevere_-_03_-_Illuminations.mp3"), // the file to load
                 1024,     // the size of the buffer. 1024 is a typical buffer size
                 false      // whether to load it totally into memory or not
                           // we say true because the file is short 

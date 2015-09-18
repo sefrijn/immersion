@@ -16,7 +16,8 @@ public class ImageLibrary {
         _p = parent;
 		
 		folder = f;
-		_p.dir= new File(_p.dataPath("") + f);
+//		_p.dir= new File(_p.dataPath("") + f);
+		_p.dir= new File(_p.dataFolder.concat(f));		
 		_p.files= _p.dir.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {

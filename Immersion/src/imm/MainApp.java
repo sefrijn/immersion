@@ -9,7 +9,15 @@ import ddf.minim.*;
 import codeanticode.syphon.*;
 
 @SuppressWarnings("serial")
+
 public class MainApp extends PApplet{
+	
+	
+	public static void main(String args[]) {
+	    PApplet.main("imm.MainApp");
+	 }
+
+	
 	// Configuration
 	// Size of image sent to Madmapper
 	int setupWidth = 1000;
@@ -25,6 +33,8 @@ public class MainApp extends PApplet{
 	int beatsLifespan = 12;
 	int beatsPerBar = 1;
 	int frameRateSet = 30;
+	
+	String dataFolder = System.getProperty("user.dir").concat("/data");
 	
 	// Time options
 	int phase1 = frameRateSet*1; // 5 seconds
@@ -335,5 +345,6 @@ public class MainApp extends PApplet{
 		  pg.endShape();
 		
 	}
-
 }
+
+

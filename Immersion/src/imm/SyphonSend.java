@@ -11,7 +11,7 @@ public class SyphonSend {
 	public SyphonSend(MainApp parent) {
 		_p = parent;
 		_p.pg = _p.createGraphics(_p.setupWidth, _p.setupHeight,PApplet.P2D);
-//		System.loadLibrary("jsyphon");
+		System.loadLibrary("JSyphon");
 	}
 	
 	void sendImage(){

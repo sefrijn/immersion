@@ -19,7 +19,7 @@ public class HeartBeatPlayer {
 		_p = parent;
 		this.heartbeatSounds = null;
 		animationCounter = 0;
-		img = _p.loadImage("human.jpg");
+		img = _p.loadImage(_p.dataFolder.concat("/human.jpg"));
 		
 	}
 	

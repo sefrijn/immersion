@@ -8,7 +8,7 @@ public class SequencerBackground {
 	PImage img;
 	SequencerBackground(MainApp parent){
 		_p = parent;
-		img = _p.loadImage("bg.jpg");
+		img = _p.loadImage(_p.dataFolder.concat("/bg.jpg"));
 	}
 	void draw(){
 //		Start drawing

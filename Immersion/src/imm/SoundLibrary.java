@@ -19,13 +19,18 @@ public class SoundLibrary {
         _p = parent;
 		
 		folder = f;
-		_p.dir= new File(_p.dataPath("") + f);
+//		_p.dir= new File(_p.dataPath("") + f);
+		_p.dir= new File(_p.dataFolder.concat(f));
+		PApplet.println(System.getProperty("user.dir"));
+		PApplet.println(_p.dir);
+		
 		_p.files= _p.dir.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
 				return !name.equals(".DS_Store");
 			}
 		});
+		PApplet.println(_p.files[0]);
 		paths = new String[_p.files.length][2];
 		samples = new Sampler[_p.files.length];
 		rateControl = new TickRate[_p.files.length];
